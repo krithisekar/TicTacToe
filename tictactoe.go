@@ -8,6 +8,7 @@ import (
 var square = make([]string, 10)
 var flag = 0
 var count = 0
+
 func main() {
 
 	square[0] = "o"
@@ -24,7 +25,6 @@ func main() {
 
 	var i, choice int
 	var mark string
-	//  i = 1
 	for {
 		if i != -1 {
 
@@ -41,15 +41,11 @@ func main() {
 			log.Println(i)
 			fmt.Println("enter a number: player ", player)
 			fmt.Scan(&choice)
-			log.Println(i)
 			if player == 1 {
 				mark = "X"
-				log.Println(mark)
 			} else {
 				mark = "O"
-				fmt.Println(mark)
 			}
-			log.Println("choice ", choice)
 			if choice == 1 && square[1] == "1" {
 				square[1] = mark
 			} else if choice == 2 && square[2] == "2" {
@@ -66,43 +62,37 @@ func main() {
 				square[7] = mark
 			} else if choice == 8 && square[8] == "8" {
 				square[8] = mark
-			} else if choice == 9 && square[2] == "9" {
+			} else if choice == 9 && square[9] == "9" {
 				square[9] = mark
 			} else {
 				fmt.Println("Invalid move")
 				player = player - 1
 
 			}
-
-			log.Println(i)
 			i = checkStatus(choice)
-			            
-			log.Println("came out of check status")
 
-			log.Println(i)
 			if i == -1 {
-				//i = i + 2
-				i = i+1
+				i = i + 1
 			}
 			log.Println(i)
-			if player == 2{
+			if player == 2 {
 				flag = 1
 			}
-			if flag == 0 && i != 1{
-				player = player + 1 
-			}			
-			if flag == 1 && i != 1{
+			if flag == 0 && i != 1 {
+				player = player + 1
+			}
+			if flag == 1 && i != 1 {
 				player = 1
 			}
 		}
 		Board()
-		
+
 		if i == 1 {
 			fmt.Printf("==>\aPlayer %d win ", player)
 			break
 		} else {
 			fmt.Printf("==>\aGame draw")
-			
+
 		}
 		fmt.Scanln()
 	}
@@ -110,7 +100,6 @@ func main() {
 }
 
 func checkStatus(choice int) int {
-	log.Println("checking status")
 	if square[1] == square[2] && square[2] == square[3] {
 		return 1
 	} else if square[4] == square[5] && square[5] == square[6] {
